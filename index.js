@@ -1,15 +1,14 @@
-var get = require('lodash.get')
-var format = require('util').format
+const get = require('lodash.get')
 
-module.exports = function(options) {
+module.exports = (options) => {
 
-    var GitHub = get(options, 'github-api') || require('github-api')
+    const GitHub = get(options, 'github-api') || require('github-api')
 
-    function start(dependencies, cb) {
+    const start = (dependencies, cb) => {
         cb(null, new GitHub(dependencies.config || {}))
     }
 
     return {
-        start: start
+        start
     }
 }
